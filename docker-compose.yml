@@ -1,0 +1,20 @@
+version: '3'
+services:
+  coffeflask:
+    image: coffeeflask
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mymongo
+    links:
+      - mymongo
+    volumes:
+      - ./appFiles:/scripts
+  mymongo:
+    image: mongo:4.2.24
+    ports:
+      - "27017:27017"
+    volumes:
+      - /home/devops/mongodata:/data/db 
+          
+
